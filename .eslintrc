@@ -1,0 +1,27 @@
+{
+  "extends": "airbnb",
+  "plugins": ["react-hooks"],
+  "env": {
+      "browser": true
+  },
+  "ignorePatterns": [
+      "/src/App.test.js",
+      "/src/serviceWorker.js*",
+      "/src/setupTests.js*"
+  ],
+  "rules": {
+      "react-hooks/rules-of-hooks": 2,
+      "react-hooks/exhaustive-deps": 2,
+      "react/jsx-filename-extension": 0,
+      "react/jsx-props-no-spreading": 0,
+      "max-len": [
+          "error",
+          {
+              "code": 190
+          }
+      ],
+      "react/no-danger": 0,
+      "import/no-named-as-default": 0,
+      "import/no-named-as-default-member": 0
+  }
+}
