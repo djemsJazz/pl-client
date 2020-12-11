@@ -1,12 +1,13 @@
 import Axios from 'axios'
 import { myHeaders, baseApi, apiFetch } from '../Components/utils'
+import { handlerError } from '../helpers/utils'
 
 export const signUpUser = async (data, cb, errCb) => {
     try {
         await Axios.post(`${baseApi}/users/signup`, data, { headers: myHeaders })
         cb()
     } catch (error) {
-        console.log('Request error', error);
+       handlerError(error);
         errCb()
     }
 }
@@ -15,7 +16,7 @@ export const verifyCode = async (data, cb, errCb) => {
         const { data: { token, user } } = await Axios.post(`${baseApi}/users/checkcode`, data, { headers: myHeaders })
         cb(token, user)
     } catch (error) {
-        console.log('Request error', error);
+       handlerError(error);
         errCb()
     }
 }
@@ -26,7 +27,7 @@ export const login = async (idToken, cb, errCb) => {
         const { user, token } = response.data
         cb({ user, token })
     } catch (error) {
-        console.log('Request error', error)
+        handlerError(error);
         errCb()
     }
 }
@@ -36,7 +37,7 @@ export const getCurrentUser = async (token, cb, errCb) => {
         const response = await apiFetch(requestConfig);
         cb(response.data);
     } catch (error) {
-        console.log(error)
+        handlerError(error);
         errCb()
     }
 }
