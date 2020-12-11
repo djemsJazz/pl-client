@@ -1,1 +1,1 @@
-export const handlerError = (error) => (console.log({...error}));
+export const handlerError = (error) => (console.log({ ...error }));
