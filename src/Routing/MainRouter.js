@@ -13,19 +13,13 @@ const MainRouter = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (!token) {
-      setIsAuthenticated(false)
-      setUser(null)
-    } else {
-      getCurrentUser(token, (data) => {
-        setUser(data)
-        setIsAuthenticated(true);
-      }, () => {
-        setIsAuthenticated(false);
-        setUser(null);
-      });
-    }
+    getCurrentUser((data) => {
+      setUser(data)
+      setIsAuthenticated(true);
+    }, () => {
+      setIsAuthenticated(false);
+      setUser(null);
+    });
     setLoading(false)
   }, [setUser, setIsAuthenticated, setLoading])
 
@@ -37,7 +31,7 @@ const MainRouter = () => {
         <Switch>
           <Route path='/' component={Home} exact />
           <ProtectedRoute path='/profile' component={Profile} exact />
-          <Route path='/details' component={Details} exact />
+          <ProtectedRoute path='/details' component={Details} exact />
         </Switch>
       </>
     </Router>
