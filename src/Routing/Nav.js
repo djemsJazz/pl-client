@@ -5,6 +5,7 @@ import GoogleLogin from 'react-google-login';
 import { LoginContext } from '../Context/LoginContext';
 import ProtectedLink from './ProtectedLink';
 import { login } from '../ApiRequests/User';
+import { handlerError } from '../helpers/utils';
 
 const NavBar = () => {
   const { isAuthenticated, setIsAuthenticated, setUser } = useContext(LoginContext);
@@ -22,7 +23,7 @@ const NavBar = () => {
   };
 
   const googleLoginFailCb = (response) => {
-    console.log('prob', response);
+    handlerError(response);
     setUser(null);
     setIsAuthenticated(false);
   };
