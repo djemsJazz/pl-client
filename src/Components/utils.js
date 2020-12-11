@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import { handlerError } from '../helpers/utils';
 
 const getHeaders = (token) => ({
   'Access-Control-Allow-Origin': '*',
@@ -6,18 +7,26 @@ const getHeaders = (token) => ({
   Authorization: `Bearer ${token || ''}`,
 });
 
+const getToken = () => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    return null;
+  }
+  return token;
+};
+
 export const baseApi = 'http://localhost:5000';
 
 export const apiFetch = async ({
-  url, method, data, headers,
+  url, method, data,
 }) => {
   const requestConfig = { method: 'get', url };
   if (method) {
     requestConfig.method = method;
     requestConfig.data = data;
   }
-  const token = getToken();
   try {
+    const token = await getToken();
     const requestHeaders = { ...getHeaders(token) };
     const request = Axios({
       ...requestConfig,
@@ -28,14 +37,7 @@ export const apiFetch = async ({
     });
     return request;
   } catch (error) {
-    console.log('Something wrong was happened', error);
-  }
-};
-
-const getToken = () => {
-  const token = localStorage.getItem('token');
-  if (!token) {
+    handlerError(error);
     return null;
   }
-  return token;
 };
