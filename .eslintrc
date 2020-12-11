@@ -7,7 +7,9 @@
   "ignorePatterns": [
       "/src/App.test.js",
       "/src/serviceWorker.js*",
-      "/src/setupTests.js*"
+      "/src/setupTests.js*",
+      "/src/Components/Auth/OtpModal.js",
+      "/src/Components/Auth/SignUpModal.js"
   ],
   "rules": {
       "react-hooks/rules-of-hooks": 2,
