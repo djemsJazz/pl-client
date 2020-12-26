@@ -12,7 +12,7 @@ const ProtectedLink = ({ to, children }) => {
 
 ProtectedLink.propTypes = {
   to: PropTypes.string.isRequired,
-  children: PropTypes.oneOf([
+  children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]).isRequired,

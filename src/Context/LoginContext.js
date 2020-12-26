@@ -22,7 +22,7 @@ const LoginProvider = ({ children }) => {
 };
 
 LoginProvider.propTypes = {
-  children: PropTypes.oneOf([
+  children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]).isRequired,
