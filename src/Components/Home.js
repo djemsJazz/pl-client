@@ -1,29 +1,26 @@
 import React, { useContext } from 'react';
-import { LoginContext } from '../Context/LoginContext'
-import { Button } from 'semantic-ui-react';
-import { apiFetch } from './utils';
+import { LoginContext } from '../Context/LoginContext';
 
 const Home = () => {
-  const { user, isAuthenticated } = useContext(LoginContext)
-  const getUsers = async () => {
-    try {
-      const response = await apiFetch({ url: '/users' })
-      console.log(response)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const { user, isAuthenticated } = useContext(LoginContext);
   return (
-    <div className='container'>
+    <div className="container">
       <h1>Home page</h1>
-      {isAuthenticated && user && <div>
+      {isAuthenticated && user && (
+      <div>
         <img src={user.avatar} alt={user.name} />
-        <p>Name: {user.userName}</p>
-        <p>Email: {user.email}</p>
-      </div>}
-      <Button onClick={getUsers}>Fetch</Button>
+        <p>
+          Name:
+          {user.userName}
+        </p>
+        <p>
+          Email:
+          {user.email}
+        </p>
+      </div>
+      )}
     </div>
   );
-}
+};
 
 export default Home;
