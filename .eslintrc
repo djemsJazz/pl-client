@@ -4,13 +4,6 @@
   "env": {
       "browser": true
   },
-  "ignorePatterns": [
-      "/src/App.test.js",
-      "/src/serviceWorker.js*",
-      "/src/setupTests.js*",
-      "/src/Components/Auth/OtpModal.js",
-      "/src/Components/Auth/SignUpModal.js"
-  ],
   "rules": {
       "react-hooks/rules-of-hooks": 2,
       "react-hooks/exhaustive-deps": 2,
